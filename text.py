@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 from tkinter import Toplevel
 
 i = 0
-n = 3
+n = 100
 
 
 class App(tk.Tk):
