@@ -33,7 +33,7 @@ class App(tk.Tk):
         
         def changePage():
             self.changePage(self.frame1)
-            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\GutenMorgen.mp3")
+            pygame.mixer.music.load("GutenMorgen.mp3")
             pygame.mixer.music.play()
             
         def confirm():
@@ -90,11 +90,11 @@ class App(tk.Tk):
             #pygame.mixer.init()
             
             if i == 1:
-                pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Neue Aufnahme 12 (online-audio-converter.com).mp3")
+                pygame.mixer.music.load("Neue Aufnahme 12 (online-audio-converter.com).mp3")
                 pygame.mixer.music.play()
             
             elif i == 9:
-                pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\StevanQuiz.mp3")
+                pygame.mixer.music.load("StevanQuiz.mp3")
                 pygame.mixer.music.play()
                 
         
@@ -104,28 +104,28 @@ class App(tk.Tk):
             self.quiz2.config(state='disabled')
             self.quiz3.config(state='disabled')
             self.button.config(state='disabled')
-            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Richtig.mp3")
+            pygame.mixer.music.load("Richtig.mp3")
             pygame.mixer.music.play()
             
         def quiz2():
             self.titleLabel1.config(text="Falsch")
             self.quiz1.config(state='disabled')
             self.button.config(state='disabled')
-            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Falsch.mp3")
+            pygame.mixer.music.load("Falsch.mp3")
             pygame.mixer.music.play()
             
         def quiz3():
             self.titleLabel1.config(text="Falsch")
             self.quiz1.config(state='disabled')
             self.button.config(state='disabled')
-            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Falsch.mp3")
+            pygame.mixer.music.load("Falsch.mp3")
             pygame.mixer.music.play()
             
         # タイトルラベル作成
         self.titleLabel1 = tk.Label(self.frame1, text="Guten Morgen " + name + ".", font=('Helvetica', '35'))
         self.titleLabel1.pack()
         
-        self.image = tk.PhotoImage(file=r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\stevangame.png")
+        self.image = tk.PhotoImage(file="stevangame.png")
         self.label = tk.Label(self.frame1, image = self.image)
         self.label.place(x=100,y=80)
         
@@ -167,10 +167,10 @@ class App(tk.Tk):
             y_position = 500
             new_window.geometry(f"+{x_position}+{y_position}")
             
-            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\ラッパのファンファーレ.mp3")
+            pygame.mixer.music.load("ラッパのファンファーレ.mp3")
             pygame.mixer.music.play()
 
-            self.image2 = tk.PhotoImage(file=r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\_20230110_175739.png")
+            self.image2 = tk.PhotoImage(file="_20230110_175739.png")
             self.label = tk.Label(new_window, image = self.image2)
             self.label.pack()
             
