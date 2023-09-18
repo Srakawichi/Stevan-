@@ -44,7 +44,7 @@ class App(tk.Tk):
                 file.write(name)
                 
             self.titleLabel1.config(text= "Guten Morgen " + name)
-#            self.changePageButton.config(state='normal')              #ä
+            self.changePageButton.config(state='normal')              #ä
             #pygame.mixer.init()
             
                
@@ -58,7 +58,7 @@ class App(tk.Tk):
         self.titleLabel.pack(anchor='center')
         # フレーム1に移動するボタン
         self.changePageButton = tk.Button(self.main_frame, text="Play Game", command=changePage , font=('Helvetica',50))
-#        self.changePageButton.config(state='disabled')                       #ä
+        self.changePageButton.config(state='disabled')                       #ä
         self.changePageButton.place(x=200,y=200)
         self.entryname = tk.Entry(self.main_frame, text="Gib dein Namen ein", font=("Arial",32))
         self.entryname.place(x=150,y=380)
@@ -133,7 +133,7 @@ class App(tk.Tk):
         self.back_button = tk.Button(self.frame1, text="Home" , command=lambda : self.changePage(self.main_frame), font=('Helvetica',24))
         self.back_button.place(x=20,y=500)
         self.changePageButton1 = tk.Button(self.frame1, text="Weiter", command=lambda : self.changePage(self.frame2), font=('Helvetica',26))
-#        self.changePageButton1.config(state = 'disabled')                        #ä
+        self.changePageButton1.config(state = 'disabled')                        #ä
         self.changePageButton1.place(x=600,y=500)
         self.button = tk.Button(self.frame1, text="Interaktion", command = machen, font=('Helvetica',26), width=10)
         self.button.place(x=300,y=350)
@@ -167,7 +167,7 @@ class App(tk.Tk):
             y_position = 500
             new_window.geometry(f"+{x_position}+{y_position}")
             
-            pygame.mixer.music.load("ラッパのファンファーレ.mp3")
+            pygame.mixer.music.load("rappa.mp3")
             pygame.mixer.music.play()
 
             self.image2 = tk.PhotoImage(file="_20230110_175739.png")
