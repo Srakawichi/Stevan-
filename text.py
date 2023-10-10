@@ -5,8 +5,8 @@ from PIL import Image, ImageTk
 from tkinter import Toplevel
 
 i = 0
-n = 100
-
+n = 30
+select = None
 
 class App(tk.Tk):
     # 呪文
@@ -21,7 +21,7 @@ class App(tk.Tk):
 
         # ウィンドウの大きさを決定
         self.geometry("800x600")
-
+        
         # ウィンドウのグリッドを 1x1 にする
         # この処理をコメントアウトすると配置がズレる
         self.grid_rowconfigure(0, weight=1)
@@ -37,8 +37,10 @@ class App(tk.Tk):
             pygame.mixer.music.play()
             
         def confirm():
+            global select
             name = self.entryname.get()
             self.entryname.delete(0, 'end')
+            print(select)
             self.titleLabel.config( text = "Willkommen " + name)
             with open("game.txt", "w") as file:
                 file.write(name)
@@ -47,14 +49,21 @@ class App(tk.Tk):
             self.changePageButton.config(state='normal')              #ä
             #pygame.mixer.init()
             
-               
+        def language():
+            select = self.radio.get()
+            if select == 'j':
+                self.changePageButton.config(text='  プレイ  ')
+                self.confirm.config(text=' 名前を入力  ')
+                self.titleLabel.config(text='究極のStevanQuiz!')
+            
+        
         # Datei "game.txt" im Lesemodus öffnen
         with open("game.txt", "r") as file:
             name = file.read()
             
             
         # タイトルラベル作成
-        self.titleLabel = tk.Label(self.main_frame, text="Das Ultimative StevanQuiz", font=('Helvetica', '35'))
+        self.titleLabel = tk.Label(self.main_frame, text="Das ultimative StevanQuiz", font=('Helvetica', '35'))
         self.titleLabel.pack(anchor='center')
         # フレーム1に移動するボタン
         self.changePageButton = tk.Button(self.main_frame, text="Play Game", command=changePage , font=('Helvetica',50))
@@ -64,6 +73,15 @@ class App(tk.Tk):
         self.entryname.place(x=150,y=380)
         self.confirm = tk.Button(self.main_frame, text="Name Bestätigen", command = confirm, font=('Helvetica',26))
         self.confirm.place(x=250,y=460)
+        
+        #language
+        self.radio = tk.StringVar()
+        
+        self.c1 = tk.Radiobutton(self.main_frame, text='DE', variable=self.radio, value='d', command=language)
+        self.c1.pack()
+        self.c2 = tk.Radiobutton(self.main_frame, text='JP', variable=self.radio, value='j', command=language)
+        self.c2.pack()
+        
 #--------------------------------------------------------------------------
 #-----------------------------------frame1---------------------------------
         # 移動先フレーム作成
@@ -77,11 +95,11 @@ class App(tk.Tk):
         def neutext():
             global i
             if i < 10:
-                w = ["Ich bin Stevan. Ich hoffe", "du hattest einen schönen Tag.", "übrigens,","hast du schon die Hausaufgaben","für Deutsch und PW gemacht?","...","Zeit für ein Quiz!","ich nenne es","StevanQuiz!", "Was bedeutet appreciate"]
+                w = ["Ich bin Stevan. Ich hoffe", "du hattest einen schönen Tag.", "übrigens,","hast du schon die Hausaufgaben","für Deutsch und PW gemacht?","...","Zeit für ein Quiz!","ich nenne es","StevanQuiz!", "Was bedeutet Wupsas?"]
                 self.titleLabel1.config(text=w[i])
                 i += 1
             else:
-                self.quiz1.config(text="A) Danken       ", state = 'normal', width=15)
+                self.quiz1.config(text="A) Rucksack       ", state = 'normal', width=15)
                 self.quiz2.config(text="B) Wupsas       ", state = 'normal', width=15)
                 self.quiz3.config(text="C) panapana     ", state = 'normal', width=15)
                 
@@ -90,11 +108,11 @@ class App(tk.Tk):
             #pygame.mixer.init()
             
             if i == 1:
-                pygame.mixer.music.load("Neue Aufnahme 12 (online-audio-converter.com).mp3")
+                pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Neue Aufnahme 12 (online-audio-converter.com).mp3")
                 pygame.mixer.music.play()
             
             elif i == 9:
-                pygame.mixer.music.load("StevanQuiz.mp3")
+                pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\StevanQuiz.mp3")
                 pygame.mixer.music.play()
                 
         
@@ -104,28 +122,28 @@ class App(tk.Tk):
             self.quiz2.config(state='disabled')
             self.quiz3.config(state='disabled')
             self.button.config(state='disabled')
-            pygame.mixer.music.load("Richtig.mp3")
+            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Richtig.mp3")
             pygame.mixer.music.play()
             
         def quiz2():
             self.titleLabel1.config(text="Falsch")
             self.quiz1.config(state='disabled')
             self.button.config(state='disabled')
-            pygame.mixer.music.load("Falsch.mp3")
+            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Falsch.mp3")
             pygame.mixer.music.play()
             
         def quiz3():
             self.titleLabel1.config(text="Falsch")
             self.quiz1.config(state='disabled')
             self.button.config(state='disabled')
-            pygame.mixer.music.load("Falsch.mp3")
+            pygame.mixer.music.load(r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\Falsch.mp3")
             pygame.mixer.music.play()
             
         # タイトルラベル作成
         self.titleLabel1 = tk.Label(self.frame1, text="Guten Morgen " + name + ".", font=('Helvetica', '35'))
         self.titleLabel1.pack()
         
-        self.image = tk.PhotoImage(file="stevangame.png")
+        self.image = tk.PhotoImage(file=r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\stevangame.png")
         self.label = tk.Label(self.frame1, image = self.image)
         self.label.place(x=100,y=80)
         
@@ -156,7 +174,13 @@ class App(tk.Tk):
             x, y = self.frame2.winfo_x(), self.frame2.winfo_y()
             self.frame2.geometry(f"400x200+{x+5}+{y+5}")  # Ändere die Position um 5 Pixel nach rechts und unten
             new_window.after(10, move)  # Warte 100 Millisekunden und rufe die Funktion erneut auf
-            
+        
+        def aufgeben():
+             self.changePage(self.main_frame)
+             self.frame2.destroy()
+             self.frame1.destroy()
+             #self.main_frame.destroy()
+             
         def bild():        
             new_window = Toplevel()  # Neues Fenster erstellen
             new_window.title("Neues Fenster")  # Titel setzen
@@ -170,7 +194,7 @@ class App(tk.Tk):
             pygame.mixer.music.load("rappa.mp3")
             pygame.mixer.music.play()
 
-            self.image2 = tk.PhotoImage(file="_20230110_175739.png")
+            self.image2 = tk.PhotoImage(file=r"C:\Users\rebek\OneDrive\Desktop\Programme\Python\GameHaruki\_20230110_175739.png")
             self.label = tk.Label(new_window, image = self.image2)
             self.label.pack()
             
@@ -189,15 +213,12 @@ class App(tk.Tk):
                 self.counterbutton.config(text="> o <")
                 bild()
                 n -= 1
-                
-
-                    
             
         
         self.titleLabel2 = tk.Label(self.frame2, text=" ", font=('Helvetica','23'))
         self.titleLabel2.pack(anchor='center')
         
-        self.back_button2 = tk.Button(self.frame2, text="Aufgeben", command=lambda : self.changePage(self.main_frame), font=('Helvetica', '35'), width = 9)
+        self.back_button2 = tk.Button(self.frame2, text="Aufgeben", command=aufgeben, font=('Helvetica', '35'), width = 9)
         self.back_button2.place(x=270,y=500)
         
         #無限ボタンクリック
@@ -215,3 +236,4 @@ class App(tk.Tk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+
